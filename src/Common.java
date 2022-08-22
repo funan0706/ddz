@@ -222,7 +222,7 @@ public class Common {
     public static Model getModel(List<Card> list){
         List<Card> list2=new Vector<Card>(list);
         Model model=new Model();
-        Common.getBoomb(list2, model); // ok
+        Common.getBoomb(list2, model); 
         // ------拆3带
         Common.getThree(list2, model);
         // 拆飞机
@@ -343,8 +343,7 @@ public class Common {
     }
 
     public static void getTwoTwo(List<Card> list, Model model) {
-        List<String> del = new Vector<>();// 要删除的Cards
-        // 从model里面的对子找
+        List<String> del = new Vector<>();// 要删除的牌
         List<String> l = model.a2;
         if (l.size() < 3)
             return;
@@ -361,7 +360,7 @@ public class Common {
                     k = j;
             }
             if (k - i >= 2)// k=4 i=1
-            {// 说明从i到k是连队
+            {// 从i到k是连对
                 String ss = "";
                 for (int j = i; j < k; j++) {
                     ss += l.get(j) + ",";
@@ -427,10 +426,10 @@ public class Common {
         CardType cType1=Common.jugdeType(c);
         CardType cType2=Common.jugdeType(currentlist);
 
-        //如果牌数不相等并且不是炸弹的话，出牌就是错误的
+        //如果牌数不相等并且不是炸弹的话，不能出牌
         if (cType1 != CardType.c4 && c.size() != currentlist.size())
             return 0;
-        //如果牌数相等但类型不同并且不是炸弹的话，出牌就是错误的
+        //如果牌数相等但类型不同并且不是炸弹的话，不能出牌
         if (cType1 != CardType.c4 && Common.jugdeType(c) != Common.jugdeType(currentlist)) {
             return 0;
         }
